@@ -68,6 +68,9 @@ void _Error_Handler(char *, int);
 }
 #endif
 
+double calculaResistencia(double tensaoSensor);
+double calculaTemperatura(double resistencia);
+
 /**
   * @}
   */ 
