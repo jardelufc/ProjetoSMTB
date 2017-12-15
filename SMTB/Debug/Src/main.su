@@ -1,5 +1,5 @@
 main.c:76:8:calculaResistencia	24	static
 main.c:80:8:calculaTemperatura	8	static
-main.c:161:6:SystemClock_Config	88	static
-main.c:84:5:main	104	static
-main.c:299:6:_Error_Handler	0	static
+main.c:160:6:SystemClock_Config	88	static
+main.c:84:5:main	80	static
+main.c:298:6:_Error_Handler	0	static

@@ -118,16 +118,15 @@ int main(void)
 
 	unsigned long long i;
 	int tensaoSensor = 0;
+	int tempFinal;
+	int resto = 0;
 	double resistencia = 0;
 	double temperatura = 0;
 	char temp[16];
-	int tempFinal;
-	int resto = 0;
 	uint8_t space[] = " ";
 	uint8_t eComercial[] = "&";
 	uint8_t hashtag[] = "#";
-	uint8_t buffer[] = "Welcome to the HELL!!\n";
-	HAL_UART_Transmit(&huart1, (uint8_t*) buffer, sizeof(buffer), 100);
+
 	while (TRUE) {
 
 		HAL_ADC_Start(&hadc1);
@@ -142,10 +141,10 @@ int main(void)
 			tempFinal++;
 		}
 		resto = tempFinal % 10;
-		tempFinal -= resto;
-		int len = sprintf(temp, "%d.%d", tempFinal / 10, resto);
+		tempFinal = tempFinal - resto - 1;
+		int len = sprintf(temp, "%d.%02d", tempFinal / 10, resto);
 		HAL_UART_Transmit(&huart1, (uint8_t*)eComercial, sizeof(eComercial), 100);
-		HAL_UART_Transmit(&huart1, (uint8_t*)(&temp), len, 100);
+		HAL_UART_Transmit(&huart1, (uint8_t*)(&temp), len +1, 100);
 		HAL_UART_Transmit(&huart1, (uint8_t*)space, sizeof(space), 100);
 		HAL_UART_Transmit(&huart1, (uint8_t*)hashtag, sizeof(hashtag), 100);
 
